@@ -1,0 +1,9 @@
+adium-theme-ubuntu==0.3.4
+Flask==0.10.1
+itsdangerous==0.24
+Jinja2==2.9.6
+MarkupSafe==1.0
+pycurl==7.43.0
+python-apt==1.1.0b1
+unity-lens-photos==1.0
+Werkzeug==0.12.2
