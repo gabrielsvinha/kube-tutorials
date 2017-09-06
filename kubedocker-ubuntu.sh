@@ -16,12 +16,21 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get install -y docker-ce
 
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
 echo "----- Installing kubeadm + kubelet + kubectl"
 
-sudo apt-get update && sudo apt-get install -y apt-transport-https
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-deb http://apt.kubernetes.io/ kubernetes-xenial main
-EOF
-sudo apt-get update
-sudo apt-get install -y kubelet kubeadm
+sudo curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+sudo su -c  'echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" >> /etc/apt/sources.list.d/kubernetes.list'
+sudo apt-get update -y
+
+apt-get install -y \
+  kubelet
+
+sudo sed -i 38,40d /var/lib/dpkg/info/kubelet.postinst
+
+sudo apt-get install -y \
+  kubernetes-cni \
+  kubectl \
+  kubeadm
