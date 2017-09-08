@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: hello-world-deployment
+    spec:
+      containers:
+      - name: hello-world-cont
+        image: vinhags/hw-flask:1.0
+        ports:
+        - containerPort: 8080

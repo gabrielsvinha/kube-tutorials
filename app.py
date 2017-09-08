@@ -1,10 +1,11 @@
+import socket
 from flask import Flask, jsonify
 app = Flask(__name__)
 
 @app.route('/')
 def hello():
   return jsonify(
-    message = "Hello from my Clusterized app"
+    message = "Hello from %s" %socket.gethostbyname(socket.gethostname())
   )
 
 if __name__ == '__main__':
