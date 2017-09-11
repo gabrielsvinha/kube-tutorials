@@ -3,7 +3,7 @@
 In this tutorial we will show how to run this simple application on [Google Cloud](https://cloud.google.com/?hl=pt-br).
 
 ## The application
-The app is built in Flask and returns the IP Address of the Pod which the request is running. If you had trouble knowing what is a Pod check out this [link](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/).
+The app is built in Flask and returns the name of the Pod which the request is running and the name of the node. If you had trouble knowing what is a Pod check out this [link](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/).
 
 ## Specifications
  In order to complete this tutorial I am assuming your have an machine with [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/), bash, an account on google cloud (check link above) and the [Google Cloud SDK](https://cloud.google.com/sdk/?hl=pt-br) already installed.
@@ -30,6 +30,8 @@ The app is built in Flask and returns the IP Address of the Pod which the reques
 
  `port it will be running = 8080`
  
+ Also, our deployment passes an `env` tag which is data we want our Pods and VMs to know about. In the file, you can see the `spec.nodeName` on the fields of the environment variable.
+
  Download the file, then run:
  `$ kubectl create -f /path/to/hello-world-deployment.yaml`
  
@@ -58,5 +60,11 @@ In the port field, we see two values, in the left, is the external port (specifi
 Now our application is running and exposed we can make requests at will to the external IP and it will return the internal IP of the Pod it is running.
 
 `$ curl <externalIP>:<port>`
+
+After executing the above command you should see a result such as:
+
+![results](https://raw.githubusercontent.com/GabrielSVinha/hw-flask/master/k8s/screenshots/Screenshot%20from%202017-09-11%2015-04-21.png)
+
+If you had any trouble following this tutorial or any questions regarding the app or kubernetes structures proposed, feel free to open an [issue](https://github.com/GabrielSVinha/hw-flask/issues) and I will be checking soon.
 
 Thanks!
