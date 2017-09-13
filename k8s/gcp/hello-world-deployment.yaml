@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: hello-world-deployment
+    spec:
+      containers:
+      - name: hello-world-container
+        image: vinhags/hw-flask:2.1
+        ports:
+        - containerPort: 8080
+        env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
