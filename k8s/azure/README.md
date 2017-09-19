@@ -86,5 +86,3 @@ After executing the above command you should see a result such as:
 ![results](https://raw.githubusercontent.com/GabrielSVinha/hw-flask/master/k8s/screenshots/Screenshot%20from%202017-09-11%2015-04-21.png)
 
 If you had any trouble following this tutorial or any questions regarding the app or kubernetes structures proposed, feel free to open an [issue](https://github.com/GabrielSVinha/hw-flask/issues) and I will be checking soon.
-
-Mesmos passos do GCP.
