@@ -35,3 +35,14 @@ The title of discoverers and the fact that they are both in federtions is the on
 # Hands On, baby!
 ## Pre-requisites
 When I got through this tutorial, I was using an Ubuntu 16.04 machine, Kubenetes 1.6, an [Amazon Web Services](https://aws.amazon.com/pt/) account, [Azure](https://portal.azure.com) (and its SDK), [Google Cloud](https://cloud.google.com) (and its SDK), [Conjure-up](https://conjure-up.io/) 2.3.
+
+## Bootstraping
+First, since our federation is a set of cluster, we need to have them running and healthy. In the beggining, the Federation Control Pane requires a host cluster for it to run on. My option was to make the google cloud cluster our host cluster.
+
+## Creating all clusters
+In this section, we create the clusters that will be inside our federation, check out any of the tutorials who contain who to create a cluster on each of the cloud providers:
+
+- [Azure](https://github.com/GabrielSVinha/kube-tutorials/blob/master/k8s/azure/README.md#creating-an-azure-acs-cluster)
+- [AWS]() (TO-DO)
+- [Google Cloud](https://github.com/GabrielSVinha/kube-tutorials/tree/master/k8s/gcp#creating-a-cluster)
+- [On-Prem]() (TO-DO)
