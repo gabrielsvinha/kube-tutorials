@@ -46,3 +46,25 @@ In this section, we create the clusters that will be inside our federation, chec
 - [AWS]() (TO-DO)
 - [Google Cloud](https://github.com/GabrielSVinha/kube-tutorials/tree/master/k8s/gcp#creating-a-cluster)
 - [On-Prem]() (TO-DO)
+
+After we have {at least} our host cluster running and its contexts added to kubernetes, we can init a federtion with the following command:
+
+`kubefed init [name-of-your-cluster]`
+
+Also, these flags are necessary:
+
+```
+--host-cluster-context (name of the host cluster context)
+--dns-provider (public DNS provider, can be google-clouddns, aws-router53 or coredns)
+--dns-zone-name (the suffix of the federtion hostname)
+```
+
+It's possible that the namespace 'default' is not created after he federtion initialization, this is due to a [bug](https://github.com/kubernetes/kubernetes/issues/33292), in case this happens, create it manually via `kubectl`
+
+## Adding clusters to federation
+Now we have a stable federation running in a google cloud cluster, a DNS provider running on it so services can be discovered we need to populate our federtion with clusters. In the [tutorial](https://github.com/GabrielSVinha/kube-tutorials/blob/master/k8s/azure/README.md#creating-an-azure-acs-cluster) we created an azure cluster and created a context for it in kubernetes.
+
+Now we have everything settled for azure, we can attach it to our federation by running:
+
+`kubefed join [cluster-name] --host-cluster-context (same as provided above)`
+In case you have any trouble (I found myself with problems with RBAC authorization) check out the [troubleshooting](https://github.com/GabrielSVinha/kube-tutorials/tree/master/k8s/troubleshooting) guides regarding it.
