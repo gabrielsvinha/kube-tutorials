@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello
+  annotations:
+    federation.alpha.kubernetes.io/cluster-selector: 
+      '[{
+        "key": "kind",
+        "operator": "In",
+        "values": ["public"]
+      }]'
+spec:
+  selector:
+    run: hello-world-deployment
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer

@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hw
+  annotations:
+    federation.alpha.kubernetes.io/cluster-selector: 
+      '[{
+        "key": "kind",
+        "operator": "In",
+        "values": ["public"]
+      }]'
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: hello-world-deployment
+    spec:
+      containers:
+      - name: hello-world-container
+        image: vinhags/hw-flask:2.1
+        ports:
+        - containerPort: 8080
+        env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
