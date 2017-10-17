@@ -9,6 +9,7 @@ metadata:
         "operator": "In",
         "values": ["private"]
       }]'
+  namespace: demo
 spec:
   replicas: 4
   template:
