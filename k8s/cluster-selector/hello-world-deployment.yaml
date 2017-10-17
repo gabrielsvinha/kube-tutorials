@@ -1,16 +1,16 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: hw
+  name: hello-world
   annotations:
     federation.alpha.kubernetes.io/cluster-selector: 
       '[{
-        "key": "kind",
+        "key": "privacy",
         "operator": "In",
-        "values": ["public"]
+        "values": ["private"]
       }]'
 spec:
-  replicas: 2
+  replicas: 4
   template:
     metadata:
       labels:

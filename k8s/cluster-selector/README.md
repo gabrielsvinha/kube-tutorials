@@ -36,7 +36,7 @@ kubectl label cluster gke kind=public location=us --context=cluster-labeled-fede
 kubectl label cluster azure kind=public location=asia--context=cluster-labeled-federation
 ```
 
-Now we have azure and google cluster labeled as `kind = public`. You can check it by running `cmcmc`, with the following output:
+Now we have azure and google cluster labeled as `kind = public`. You can check it by running `kubectl describe cluster <cluster-name>`, with the following output:
 
 ![az label output](https://raw.githubusercontent.com/GabrielSVinha/kube-tutorials/master/k8s/cluster-selector/img/azure.png)
 ![gke label output](https://raw.githubusercontent.com/GabrielSVinha/kube-tutorials/master/k8s/cluster-selector/img/gke.png)

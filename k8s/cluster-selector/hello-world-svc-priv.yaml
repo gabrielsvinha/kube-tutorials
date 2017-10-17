@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-world-service
+  annotations:
+     federation.alpha.kubernetes.io/cluster-selector: 
+       '[{
+         "key": "privacy",
+         "operator": "In",
+         "values": ["private"]
+       }]'
+  namespace: demo
+spec:
+  selector:
+    run: hello-world-deployment
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: NodePort
