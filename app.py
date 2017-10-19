@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
   return jsonify(
-    message = "Hello from pod %s running at node %s" %(socket.gethostname(), os.environ["NODE_NAME"])
+    message = "Hello from pod %s running at node %s" %(os.environ["NODE_NAME"], os.environ["CLUSTER_NAME"])
   )
 
 if __name__ == '__main__':

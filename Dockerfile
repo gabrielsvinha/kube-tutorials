@@ -2,6 +2,7 @@ from ubuntu:latest
 MAINTAINER Gabriel Vinha "gabriel.vinha@outlook.com"
 
 ARG NODE_NAME
+ARG CLUSTER_NAME
 
 #Instala pip + python dependencias
 RUN apt-get update -y
